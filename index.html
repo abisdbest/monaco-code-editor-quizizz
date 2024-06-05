@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-tab Interface</title>
+    <script src="//quizizz.pages.dev/edit/emmet.js#quizizz"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-css@3.9.0/">
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.31.1/min/vs/loader.js#quizizz"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+        .editor-container {
+            height: 100vh;
+            width: 100%;
+        }
+        .tabs {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+        }
+        .tab-buttons {
+            display: flex;
+            flex-shrink: 0; /* Prevent tabs from shrinking beyond their initial width */
+            height: 50px;
+            background-color: #f1f1f1;
+            border-bottom: 1px solid #ccc;
+            overflow-x: auto; /* Allow horizontal scrolling if tabs overflow */
+        }
+        .tab-buttons .tab-button {
+            height: 100%;
+            min-width: 100px; /* Initial width of tabs */
+            max-width: 200px; /* Maximum width of tabs */
+            flex-grow: 1;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            background-color: #f1f1f1;
+            transition: background-color 0.3s;
+        }
+        .tab-buttons .tab-button:hover {
+            background-color: #ddd;
+        }
+        .tab-buttons .tab-button.active {
+            background-color: #ccc;
+        }
+        .tab-buttons .tab-button .edit-button {
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        .add-tab-button {
+            width: 50px;
+            border: none;
+            border-left: 1px solid #ccc;
+            background-color: #f9f9f9;
+            color: #666;
+        }
+        .tab-content {
+            opacity: 0;
+            border-top: solid grey 1px;
+            flex-grow: 1;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: calc(100% - 51px);
+            width: 100%;
+        }
+        .tab-content.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <div class="tab-buttons">
+            <button class="tab-button active" onclick="openTab(event, 'Tab1')">
+                Tab 1
+                <span class="edit-button" onclick="editTabName(event, this)">&#9998;</span>
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'Tab2')">
+                Tab 2
+                <span class="edit-button" onclick="editTabName(event, this)">&#9998;</span>
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'Tab3')">
+                Tab 3
+                <span class="edit-button" onclick="editTabName(event, this)">&#9998;</span>
+            </button>
+            <button class="add-tab-button" onclick="addTab()">+</button>
+        </div>
+        <div id="Tab1" class="tab-content active">
+            <div id="editor1" class="editor-container"></div>
+        </div>
+        <div id="Tab2" class="tab-content">
+            <div id="editor2" class="editor-container"></div>
+        </div>
+        <div id="Tab3" class="tab-content">
+            <div id="editor3" class="editor-container"></div>
+        </div>
+    </div>
+
+    <script>
+        let isEditorReady = false;
+        let editor1, editor2, editor3;
+
+        function openTab(event, tabName) {
+            // Get all elements with class="tab-content" and hide them
+            var tabContents = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].style.display = 'none';
+                tabContents[i].classList.remove('active');
+            }
+
+            // Get all elements with class="tab-button" and remove the class "active"
+            var tabButtons = document.getElementsByClassName('tab-button');
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).style.display = 'block';
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function addTab() {
+            var numTabs = document.getElementsByClassName('tab-button').length;
+            var newTabNum = numTabs + 1;
+            var newTabName = 'Tab' + newTabNum;
+            var newTabContent = '<div id="' + newTabName + '" class="tab-content"><h1>Tab ' + newTabNum + ' Content</h1><p>This is the content of ' + newTabName + '.</p></div>';
+            var tabContentContainer = document.querySelector('.tabs');
+            tabContentContainer.innerHTML += newTabContent;
+            var newTabButton = document.createElement('button');
+            newTabButton.textContent = 'Tab ' + newTabNum;
+            newTabButton.classList.add('tab-button');
+            newTabButton.onclick = function() {
+                openTab(event, newTabName);
+            };
+            var addButton = document.querySelector('.add-tab-button');
+            addButton.before(newTabButton);
+            openTab(event, newTabName);
+        }
+
+        function editTabName(event, element) {
+            var tabButton = element.parentElement;
+            var tabName = tabButton.textContent.trim();
+            var input = document.createElement('input');
+            input.type = 'text';
+            input.value = tabName;
+            input.style.width = tabButton.offsetWidth + 'px';
+            input.style.height = tabButton.offsetHeight + 'px';
+            input.style.fontSize = '14px';
+            input.style.padding = '0 5px';
+            input.style.margin = '0';
+            input.style.border = '1px solid #ccc';
+            input.style.borderRadius = '3px';
+            input.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.2)';
+            tabButton.replaceChild(input, element);
+            input.focus();
+            input.addEventListener('blur', function() {
+                var newTabName = input.value.trim();
+                if (newTabName !== '') {
+                    tabButton.textContent = newTabName;
+                    tabButton.appendChild(element);
+                } else {
+                    input.focus();
+                }
+            });
+        }
+
+        function initMonacoEditors() {
+            if (!isEditorReady) {
+                require.config({
+                    paths: {
+                        'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs'
+                    }
+                });
+                require(['vs/editor/editor.main'], function () {
+                    // emmetMonaco.emmetHTML(monaco);
+                    editor1 = monaco.editor.create(document.getElementById('editor1'), {
+                        value: "hi",
+                        language: "html",
+                        theme: 'vs-dark',
+                        minimap: {
+                            enabled: false
+                        }
+                    });
+                    editor2 = monaco.editor.create(document.getElementById('editor2'), {
+                        value: "hi",
+                        language: "html",
+                        theme: 'vs-dark',
+                        minimap: {
+                            enabled: false
+                        }
+                    });
+                    editor3 = monaco.editor.create(document.getElementById('editor3'), {
+                        value: "hi",
+                        language: "html",
+                        theme: 'vs-dark',
+                        minimap: {
+                            enabled: false
+                        }
+                    });
+
+                    isEditorReady = true;
+                    editor1.getModel().onDidChangeContent((event) => {
+                        localStorage.setItem(`saved ${username}/${repo}/${file}`, editor1.getValue())
+                    });
+                    editor2.getModel().onDidChangeContent((event) => {
+                        localStorage.setItem(`saved ${username}/${repo}/${file}`, editor2.getValue())
+                    });
+                    editor3.getModel().onDidChangeContent((event) => {
+                        localStorage.setItem(`saved ${username}/${repo}/${file}`, editor3.getValue())
+                    });
+                });
+            }
+        }
+        initMonacoEditors();
+    </script>
+</body>
+</html>
