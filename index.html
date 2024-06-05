@@ -9,6 +9,10 @@
     <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.31.1/min/vs/loader.js#quizizz"></script>
     <style>
         body, html {
+            background-color: #282a32;
+            color: white;
+            font-family: Consolas, monaco, monospace;
+            user-select: none;
             margin: 0;
             padding: 0;
             width: 100%;
@@ -20,6 +24,7 @@
             width: 100%;
         }
         .tabs {
+            background-color: #282a32;
             display: flex;
             position: fixed;
             top: 0;
@@ -29,14 +34,15 @@
             flex-direction: column;
         }
         .tab-buttons {
+            background-color: #282a32;
             display: flex;
             flex-shrink: 0; /* Prevent tabs from shrinking beyond their initial width */
             height: 50px;
-            background-color: #f1f1f1;
             border-bottom: 1px solid #ccc;
             overflow-x: auto; /* Allow horizontal scrolling if tabs overflow */
         }
         .tab-buttons .tab-button {
+            background-color: #282a32;
             height: 100%;
             min-width: 100px; /* Initial width of tabs */
             max-width: 200px; /* Maximum width of tabs */
@@ -44,14 +50,14 @@
             font-size: 14px;
             cursor: pointer;
             border: none;
-            background-color: #f1f1f1;
+            color: white;
             transition: background-color 0.3s;
         }
         .tab-buttons .tab-button:hover {
-            background-color: #ddd;
+            background-color: #18191e;
         }
         .tab-buttons .tab-button.active {
-            background-color: #ccc;
+            background-color: #141519;
         }
         .tab-buttons .tab-button .edit-button {
             margin-left: 5px;
@@ -61,8 +67,8 @@
             width: 50px;
             border: none;
             border-left: 1px solid #ccc;
-            background-color: #f9f9f9;
-            color: #666;
+            background-color: #282a32;
+            color: white;
         }
         .tab-content {
             opacity: 0;
