@@ -14,7 +14,7 @@ function initMonacoEditor() {
             language: "html",
             theme: 'vs-dark',
             minimap: {
-                enabled: false
+                enabled: true
             }
         });
 
