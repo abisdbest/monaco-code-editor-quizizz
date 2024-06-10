@@ -8,7 +8,7 @@ function initMonacoEditor() {
         }
     });
     require(['vs/editor/editor.main'], function () {
-        // emmetMonaco.emmetHTML(monaco);
+        emmetMonaco.emmetHTML(monaco);
         editor = monaco.editor.create(document.getElementById('editor'), {
             value: "<html></html>",
             language: "html",
@@ -19,10 +19,6 @@ function initMonacoEditor() {
         });
 
         isEditorReady = true;
-        window.editor = editor
-        editor.getModel().onDidChangeContent((event) => {
-            localStorage.setItem(`saved ${username}/${repo}/${file}`, editor.getValue())
-        });
     });
 }
 

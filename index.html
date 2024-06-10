@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="//cdn.jsdelivr.net/npm/eruda#classroom.google.com"></script>
     <script>eruda.init();</script>
+
     <script type="module">
         import monacoCss from 'https://cdn.jsdelivr.net/npm/monaco-css@3.9.0/+esm'
     </script>
-     <!-- ignore this comment it is for testing purposes -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-css@3.9.0/+esm">
-    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.31.1/min/vs/loader.js#classroom.google.com"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="https://gimkit.pages.dev/edit/emmet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.49.0/min/vs/loader.js"></script>
     <script src="scripts/emmet.js"></script>
 
     <script src="scripts/file_explorer.js"></script>
@@ -21,13 +25,91 @@
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/file-tree.css">
 </head>
+
 <body>
     <div class="menu-tree-container">
-        <div class="menu-tree-preloader"><img src=""></div>
-        <div class="menu-tree" id="files">
-
+        <div class="menu-tree-preloader" style="display: none;"><img src=""></div>
+        <div class="menu-tree" id="files" style="display: block;">
+            <ul>
+                <li class="gif"><a onclick="openfile('Iphone-spinner-2.gif');">Iphone-spinner-2.gif</a></li>
+                <li><a>classroom.google.com</a>
+                    <ul style="display: none;">
+                        <li class="gif"><a
+                                onclick="openfile('classroom.google.com/Iphone-spinner-2.gif');">Iphone-spinner-2.gif</a>
+                        </li>
+                        <li class="png"><a onclick="openfile('classroom.google.com/css.png');">css.png</a></li>
+                        <li><a>edit</a>
+                            <ul style="display: none;">
+                                <li class="js"><a onclick="openfile('classroom.google.com/edit/emmet.js');">emmet.js</a>
+                                </li>
+                                <li class="html"><a
+                                        onclick="openfile('classroom.google.com/edit/index.html');">index.html</a></li>
+                                <li class="html"><a
+                                        onclick="openfile('classroom.google.com/edit/test.html');">test.html</a></li>
+                            </ul>
+                        </li>
+                        <li><a>explorer</a>
+                            <ul style="display: none;">
+                                <li class="html"><a
+                                        onclick="openfile('classroom.google.com/explorer/index.html');">index.html</a>
+                                </li>
+                                <li class="js"><a
+                                        onclick="openfile('classroom.google.com/explorer/script.js');">script.js</a>
+                                </li>
+                                <li class="css"><a
+                                        onclick="openfile('classroom.google.com/explorer/style.css');">style.css</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="png"><a onclick="openfile('classroom.google.com/folder.png');">folder.png</a></li>
+                        <li class="png"><a
+                                onclick="openfile('classroom.google.com/folder_open.png');">folder_open.png</a></li>
+                        <li class="png"><a onclick="openfile('classroom.google.com/html.png');">html.png</a></li>
+                        <li class="png"><a onclick="openfile('classroom.google.com/img.png');">img.png</a></li>
+                        <li class="html"><a onclick="openfile('classroom.google.com/index.html');">index.html</a></li>
+                        <li class="png"><a onclick="openfile('classroom.google.com/js.png');">js.png</a></li>
+                        <li><a>repo</a>
+                            <ul style="display: none;">
+                                <li class="html"><a
+                                        onclick="openfile('classroom.google.com/repo/index.html');">index.html</a></li>
+                            </ul>
+                        </li>
+                        <li class="js"><a onclick="openfile('classroom.google.com/script.js');">script.js</a></li>
+                        <li class="css"><a onclick="openfile('classroom.google.com/style.css');">style.css</a></li>
+                    </ul>
+                </li>
+                <li class="png"><a onclick="openfile('css.png');">css.png</a></li>
+                <li><a>edit</a>
+                    <ul style="display: none;">
+                        <li class="js"><a onclick="openfile('edit/emmet.js');">emmet.js</a></li>
+                        <li class="html"><a onclick="openfile('edit/index.html');">index.html</a></li>
+                        <li class="html"><a onclick="openfile('edit/test.html');">test.html</a></li>
+                    </ul>
+                </li>
+                <li><a>explorer</a>
+                    <ul style="display: none;">
+                        <li class="html"><a onclick="openfile('explorer/index.html');">index.html</a></li>
+                        <li class="js"><a onclick="openfile('explorer/script.js');">script.js</a></li>
+                        <li class="css"><a onclick="openfile('explorer/style.css');">style.css</a></li>
+                    </ul>
+                </li>
+                <li class="png"><a onclick="openfile('folder.png');">folder.png</a></li>
+                <li class="png"><a onclick="openfile('folder_open.png');">folder_open.png</a></li>
+                <li class="png"><a onclick="openfile('html.png');">html.png</a></li>
+                <li class="png"><a onclick="openfile('img.png');">img.png</a></li>
+                <li class="html"><a onclick="openfile('index.html');">index.html</a></li>
+                <li class="png"><a onclick="openfile('js.png');">js.png</a></li>
+                <li><a>repo</a>
+                    <ul style="display: none;">
+                        <li class="html"><a onclick="openfile('repo/index.html');">index.html</a></li>
+                    </ul>
+                </li>
+                <li class="js"><a onclick="openfile('script.js');">script.js</a></li>
+                <li class="css"><a onclick="openfile('style.css');">style.css</a></li>
+            </ul>
         </div>
     </div>
     <div id="editor"></div>
 </body>
+
 </html>
