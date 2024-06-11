@@ -31,8 +31,3 @@ $(function() {
     // Hide all lists except the outermost.
     $('.menu-tree ul ul').hide();
 });
-
-
-function openfile(filename) {
-    alert(filename)
-}

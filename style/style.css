@@ -8,8 +8,8 @@ body {
 #editor {
     position: fixed;
     z-index: 1;
-    height: calc(100% - 69px);
-    width: calc(100% - 300px);
+    height: calc(100% - 70px);
+    width: calc(100% - 250px);
     bottom: 0;
     right: 0;
 }
