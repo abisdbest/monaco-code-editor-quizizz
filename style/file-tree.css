@@ -1,9 +1,15 @@
-/*** BEGIN FILE EXPLORER CODE ***/
+body {
+    background-color: #282a32;
+    color: white;
+    font-family: Consolas, monaco, monospace;
+    user-select: none;
+}
+
 /*** BEGIN OPTIONAL styling for box that contains the list ***/
 .menu-tree-container {
     font-weight: 200px;
     font-size: 14px;
-    width: 300px;
+    width: 250px;
     height: calc(100vh - 70px);
     overflow-y: auto;
     border: 1px solid black;
@@ -13,6 +19,16 @@
     left: 0;
     background-color: #242328;
 }
+
+#editorframe {
+    position: fixed;
+    height: calc(100vh - 70px);
+    right: 0;
+    border: 1px solid black;
+    width: calc(100% - 250px);
+    bottom: 0;
+}
+
 /*** END OPTIONAL styling for box that contains the list ***/
 
 .menu-tree-preloader {
@@ -36,14 +52,14 @@
 }
 
 .menu-tree li li {
-    /*background-image: url(page.png);
-      background-position: 0 1px;
-      background-repeat: no-repeat;*/
+    /*background-image: url(https://quizizz.pages.dev/page.png);
+              background-position: 0 1px;
+              background-repeat: no-repeat;*/
     padding-left: 20px;
 }
 
 .menu-tree a {
-    /*background: transparent url(https://www.jqwidgets.com/jquery-widgets-demo/images/folder.png ) no-repeat left top; */
+    /*background: transparent url(https://quizizz.pages.dev/https://www.jqwidgets.com/jquery-widgets-demo/images/folder.png ) no-repeat left top; */
 
     padding: 0px 0 0px 0px;
     display: block;
@@ -53,41 +69,41 @@
     text-decoration: none;
 }
 
-ul > li {
-    background: transparent url(folder.png) no-repeat left top;
+ul>li {
+    background: transparent url(https://quizizz.pages.dev/folder.png) no-repeat left top;
     padding: 0px 0 0px 20px;
 }
 
-.expanded {
-    background: transparent url(folder_open.png) no-repeat left top;
+li:has(> .expanded) {
+    background: transparent url(https://quizizz.pages.dev/folder_open.png) no-repeat left top;
     padding: 0px 0 0px -12px;
 }
 
 .js {
-    background: transparent url(js.png) no-repeat left top;
+    background: transparent url(https://quizizz.pages.dev/js.png) no-repeat left top;
 }
 
 .html {
-    background: transparent url(html.png) no-repeat left top;
+    background: transparent url(https://quizizz.pages.dev/html.png) no-repeat left top;
 }
 
 .css {
-    background: transparent url(css.png) no-repeat left top;
+    background: transparent url(https://quizizz.pages.dev/css.png) no-repeat left top;
 }
 
 .txt {
-    background: transparent url(txt.png) no-repeat left top;
+    background: transparent url(https://quizizz.pages.dev/txt.png) no-repeat left top;
 }
 
 .md {
-    background: transparent url(md.png) no-repeat left top;
+    background: transparent url(https://quizizz.pages.dev/md.png) no-repeat left top;
 }
 
 .jpg,
 .jpeg,
 .png,
 .gif {
-    background: transparent url(img.png) no-repeat left top;
+    background: transparent url(https://quizizz.pages.dev/img.png) no-repeat left top;
 }
 
 /*** END IMAGE ICON ***/
@@ -95,5 +111,3 @@ ul > li {
 .menu-tree a:hover {
     background-color: #313036;
 }
-
-/*** END FILE EXPLORER CODE ***/
