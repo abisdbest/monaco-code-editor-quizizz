@@ -1,3 +1,12 @@
+document.addEventListener('keydown', e => {
+    if (e.ctrlKey && e.key === 's') {
+        // Prevent the Save dialog to open
+        e.preventDefault();
+        // Place your code here
+        save_file(current_file, current_file_value);
+    }
+});
+
 function openfile(filename) {
     document.getElementById("editor").parentElement.removeChild(document.getElementById("editor"))
     const newEditor = document.createElement("div")
@@ -31,10 +40,12 @@ async function save_file(filename, newvalue) {
             body: newvalue // body data type must match "Content-Type" header
         });
         if (!response.ok) {
+            alert("error!")
             throw new Error(`HTTP error! Status: ${response.status}`); // Check if response is ok
         }
         const text = await response.text(); // Get the response text
         console.log(text); // Log the response text to the console
+        alert("saved!")
     } catch (error) {
         console.error(`Fetch error: ${error.message}`); // Log any errors
     }

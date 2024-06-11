@@ -28,6 +28,7 @@
 </head>
 
 <body>
+    <header><span class="save">ctrl + s to save</span><button onclick="window.open('run')">run in new tab</button></header>
     <div class="menu-tree-container">
         <div class="menu-tree-preloader" style="display: none;"><img src=""></div>
         <div class="menu-tree" id="files" style="display: block;">
@@ -36,6 +37,7 @@
                 <li class="css"><a onclick="openfile('style.css');">style.css</a></li>
                 <li class="js"><a onclick="openfile('script.js');">script.js</a></li>
                 <li class="png"><a onclick="openfile('image.png');">image.png</a></li>
+                <li class="txt"><a onclick="openfile('chat.txt');">chat.txt</a></li>
                 <li>folder
                     <ul>
                         <li class="html"><a onclick="openfile('folder/index.html');">index.html</a></li>
