@@ -8,9 +8,9 @@ body {
 #editor {
     position: fixed;
     z-index: 1;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 120px);
     width: calc(100% - 250px);
-    bottom: 0;
+    bottom: 50px;
     right: 0;
 }
 
@@ -24,7 +24,7 @@ header {
     padding: 25px;
 }
 
-button {
+.run_button {
     position: absolute;
     right: 75px;
     border: none;
@@ -35,9 +35,109 @@ button {
     border-radius: 3px;
     font-weight: 100;
 }
-button:hover {
+
+.run_button:hover {
     background-color: rgb(0, 94, 0);
 }
-button:active {
+
+.run_button:active {
     background-color: rgb(0, 74, 0);
+}
+
+#terminal {
+    padding: 20px;
+    position: fixed;
+    bottom: 50px;
+    overflow: hidden;
+    right: 0;
+    z-index: 2;
+    width: calc(100% - 291px);
+    border-left: solid 1px black;
+    height: 9px;
+    /* Initial height */
+    min-height: 9px;
+    max-height: calc(100vh - 160px);
+    background-color: #242328;
+}
+
+#input {
+    display: inline;
+    outline: none;
+    visibility: visible;
+    user-select: text;
+}
+
+#input::selection {
+    color: #000;
+    background: #0F0;
+}
+
+#input:empty::before {
+    content: ' ';
+}
+
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+
+#input:focus+#caret {
+    animation: blink 1s steps(5, start) infinite;
+}
+
+#input.noCaret+#caret {
+    visibility: hidden;
+}
+
+#caret {
+    border: 0;
+    padding: 0;
+    outline: none;
+    background-color: #0F0;
+    display: inline-block;
+    font-family: monospace;
+}
+
+.resizer {
+    width: 100%;
+    height: 10px;
+    background-color: darkblue;
+    cursor: ns-resize;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(30, 29, 38);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.footer .text {
+    font-size: 14px;
+}
+
+.footer .button {
+    background-color: rgb(50, 49, 59);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.footer .button .icon {
+    margin-right: 5px;
 }

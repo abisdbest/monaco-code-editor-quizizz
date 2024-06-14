@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>VS-code rip off version | but still kind of good</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="//cdn.jsdelivr.net/npm/eruda#classroom.google.com"></script>
     <script>eruda.init();</script>
 
@@ -22,13 +23,15 @@
     <script src="scripts/file_save.js"></script>
     <script src="scripts/monaco_init.js"></script>
     <script src="scripts/monaco.js"></script>
+    <script src="scripts/terminal.js"></script>
 
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/file-tree.css">
 </head>
 
 <body>
-    <header><span class="save">ctrl + s to save</span><button onclick="window.open('run')">run in new tab</button></header>
+    <header><span class="save">ctrl + s to save</span><button class="run_button" onclick="window.open('run')">run in new tab</button>
+    </header>
     <div class="menu-tree-container">
         <div class="menu-tree-preloader" style="display: none;"><img src=""></div>
         <div class="menu-tree" id="files" style="display: block;">
@@ -49,6 +52,18 @@
         </div>
     </div>
     <div id="editor"></div>
+    <div id="terminal" style="resize: vertical;">
+        <div class="resizer" id="resizer"></div>
+        <div id="history"></div>
+        C:\WIKIPEDIA > 
+        <div id="input" contenteditable="true"></div><button id="caret" for="input">&nbsp;</button>
+    </div>
+    <div class="footer">
+        <div class="text">2024 made by dbest</div>
+        <button class="button" onclick="toggleTerminal()">
+            <i class="fas fa-terminal icon"></i> Terminal
+        </button>
+    </div>
 </body>
 
 </html>
