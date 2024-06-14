@@ -21,14 +21,16 @@ function openfile(filename) {
 
 async function fetchText(filename) {
     try {
-        const response = await fetch("https://quizizzfilehost.blaub002-302.workers.dev/" + filename);
+        const url = `https://quizizzfilehost.blaub002-302.workers.dev/${filename}?nocache=${new Date().getTime()}`;
+        const response = await fetch(url);
         if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`); // Check if response is ok
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const text = await response.text();
         return text;
     } catch (error) {
-        console.error(`Fetch error: ${error.message}`); // Log any errors
+        console.error(`Fetch error: ${error.message}`);
+        return null;
     }
 }
 
