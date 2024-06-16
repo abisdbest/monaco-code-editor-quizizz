@@ -8,7 +8,7 @@ body {
 #editor {
     position: fixed;
     z-index: 1;
-    height: calc(100vh - 120px);
+    height: calc(100% - 120px);
     width: calc(100% - 250px);
     bottom: 50px;
     right: 0;
@@ -47,16 +47,16 @@ header {
 #terminal {
     padding: 20px;
     position: fixed;
-    bottom: 50px;
-    overflow: hidden;
+    bottom: 9px;
+    overflow: auto;
     right: 0;
-    z-index: 2;
+    z-index: 1;
     width: calc(100% - 291px);
     border-left: solid 1px black;
     height: 9px;
     /* Initial height */
     min-height: 9px;
-    max-height: calc(100vh - 160px);
+    max-height: calc(100% - 119px);
     background-color: #242328;
 }
 
@@ -118,9 +118,9 @@ header {
     background-color: rgb(30, 29, 38);
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 0 20px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 2;
 }
 
 .footer .text {
@@ -136,6 +136,8 @@ header {
     cursor: pointer;
     display: flex;
     align-items: center;
+    position: absolute;
+    right: 50px;
 }
 
 .footer .button .icon {
