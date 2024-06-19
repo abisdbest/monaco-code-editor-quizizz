@@ -24,10 +24,10 @@ async function init_index() {
     html = html.replace('href="folder/style.css"', 'href="https://quizizzfilehost.blaub002-302.workers.dev/folder/style.css"')
     if (html !== null) { // Check if html is not null before writing
         document.write(html);
-        script = document.createElement('script');
-        script.src="https://cdn.jsdelivr.net/npm/eruda";
-        document.body.append(script);
-        eruda.init()
+        // script = document.createElement('script');
+        // script.src="https://cdn.jsdelivr.net/npm/eruda";
+        // document.body.append(script);
+        // eruda.init()
     } else {
         console.error("Failed to fetch HTML content");
     }
